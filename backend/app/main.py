@@ -53,7 +53,10 @@ app.include_router(complaints_router, prefix=settings.API_V1_STR)
 app.include_router(notifications_router, prefix=settings.API_V1_STR)
 
 
-@app.get("/", tags=["Health"])
+from pathlib import Path
+from fastapi.staticfiles import StaticFiles
+
+@app.get("/api", tags=["Health"])
 def root():
     return {
         "project": settings.PROJECT_NAME,
@@ -70,3 +73,10 @@ def health_check():
         "environment": settings.ENVIRONMENT,
         "debug": settings.DEBUG,
     }
+
+
+# Mount frontend static directory to serve both frontend and backend on the same port
+frontend_dir = Path(__file__).resolve().parent.parent.parent / "frontend"
+if frontend_dir.exists():
+    app.mount("/", StaticFiles(directory=str(frontend_dir), html=True), name="frontend")
+

@@ -3,8 +3,9 @@
  * All API routes and environment defaults are defined here.
  */
 const CONFIG = {
-  // Backend API Base URL (FastAPI backend runs on port 8000 by default)
-  API_BASE_URL: window.API_BASE_URL || 'http://127.0.0.1:8000/api',
+  // Backend API Base URL (defaults to current origin /api or http://127.0.0.1:8000/api)
+  API_BASE_URL: window.API_BASE_URL || (window.location && window.location.origin && window.location.origin.startsWith('http') ? window.location.origin + '/api' : 'http://127.0.0.1:8000/api'),
+
 
   // Supported User Roles matching backend UserRole enum
   ROLES: {
