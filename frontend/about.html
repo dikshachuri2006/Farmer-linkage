@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About FarmerLinkage — Digital marketplace strengthening direct agricultural market linkage and price discovery.">
+  <title>About Us — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/public.css">
+</head>
+<body>
+  <!-- Strict Public Navbar -->
+  <div id="public-navbar"></div>
+
+  <main class="section">
+    <div class="container container-narrow">
+      <div class="section-title-wrap">
+        <span class="section-tag">Our Platform</span>
+        <h1 class="section-heading">About FarmerLinkage</h1>
+        <p class="section-desc">Strengthening Agricultural Market Linkage and Price Discovery</p>
+      </div>
+
+      <div class="card" style="margin-bottom: var(--spacing-8);">
+        <div style="aspect-ratio: 16/9; overflow: hidden; background-color: var(--color-muted-bg);">
+          <img src="assets/images/farmers_farming.jpg" alt="Agricultural farmers inspecting healthy crops in farm field" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="card-body">
+          <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-3);">Mission and Purpose</h2>
+          <p>
+            FarmerLinkage is an agricultural marketplace engineered to solve critical structural challenges in traditional farmgate trade: information asymmetry, fragmented supply chains, and lack of transparent price discovery.
+          </p>
+          <p>
+            By connecting producers directly with wholesale traders, institutional buyers, and food processors, FarmerLinkage provides tools to discover prices, evaluate true net realizations after deductions, and formalize trade through verified digital agreements.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6" style="margin-bottom: var(--spacing-8);">
+        <div class="card">
+          <div class="card-body">
+            <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-2); color: var(--color-primary-green);">
+              Challenges We Aim to Address
+            </h3>
+            <ul style="padding-left: 1.25rem; color: var(--color-secondary-text); line-height: 1.7;">
+              <li><strong>Price Asymmetry:</strong> Farmers frequently lack visibility into prevailing prices across adjacent regional APMC mandis.</li>
+              <li><strong>High Intermediation Costs:</strong> Multiple layers of middlemen reduce the farmer's share of consumer expenditure.</li>
+              <li><strong>Hidden Deductions:</strong> Unclear transport tariffs, cess rates, and market handling costs reduce net farmgate earnings.</li>
+              <li><strong>Informal Trade Risks:</strong> Unrecorded verbal deals lead to counterparty disputes and settlement delays.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6">
+          <div class="card">
+            <div class="card-body">
+              <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-2); color: var(--color-deep-green);">
+                Benefits for Farmers
+              </h3>
+              <ul style="padding-left: 1.25rem; color: var(--color-secondary-text); line-height: 1.6; font-size: var(--font-size-sm);">
+                <li>Direct market reach to verified commercial buyers nationwide.</li>
+                <li>Comparative net-realization discovery before committing crops.</li>
+                <li>Full control over asking prices, lot quantities, and pickup locations.</li>
+                <li>Digital trade settlement receipts with formal audit trails.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <h3 style="font-size: var(--font-size-lg); margin-bottom: var(--spacing-2); color: var(--color-deep-green);">
+                Benefits for Buyers
+              </h3>
+              <ul style="padding-left: 1.25rem; color: var(--color-secondary-text); line-height: 1.6; font-size: var(--font-size-sm);">
+                <li>Direct procurement from verified farmers and farmer producer organizations.</li>
+                <li>Real-time lot availability with quality grade and variety specifications.</li>
+                <li>Structured offer negotiation and automated contract generation.</li>
+                <li>Downloadable digital trade settlement receipts.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: var(--spacing-8);">
+        <div class="card-body">
+          <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-3);">Marketplace & Price Discovery Features</h2>
+          <p>
+            FarmerLinkage integrates two complementary engines:
+          </p>
+          <div style="margin-bottom: var(--spacing-4);">
+            <h4 style="font-size: var(--font-size-base); color: var(--color-primary-text);">1. Digital Produce Marketplace</h4>
+            <p style="font-size: var(--font-size-sm);">
+              Farmers create available lots specifying crop type, quantity, quality grade, and expected farmgate price. Verified buyers search listings and submit binding purchase offers. Once accepted, an official trade agreement is generated.
+            </p>
+          </div>
+          <div>
+            <h4 style="font-size: var(--font-size-base); color: var(--color-primary-text);">2. Net-Realization Price Discovery</h4>
+            <p style="font-size: var(--font-size-sm);">
+              Nominal modal prices in distant mandis can be misleading due to transport distance and statutory market cess. The FarmerLinkage Price Discovery Engine calculates actual net earnings after all logistics and fee adjustments, ranking destinations by real profitability.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: var(--spacing-8);">
+        <a href="marketplace.html" class="btn btn-lg btn-primary">Explore Marketplace</a>
+        <a href="price-discovery.html" class="btn btn-lg btn-outline" style="margin-left: var(--spacing-3);">Try Price Discovery</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Strict Public Footer -->
+  <div id="public-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Navigation.renderPublicNavbar();
+      Navigation.renderPublicFooter();
+    });
+  </script>
+</body>
+</html>

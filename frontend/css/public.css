@@ -1,0 +1,454 @@
+/* ==========================================================================
+   FarmerLinkage — Public Website & Navigation Styles
+   ========================================================================== */
+
+/* 1. STRICT PUBLIC NAVBAR (Section 6) */
+.public-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  height: 64px;
+}
+
+.public-navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-deep-green);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.navbar-brand:hover {
+  text-decoration: none;
+  color: var(--color-primary-green);
+}
+
+.navbar-brand-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+/* Language selector */
+.lang-selector-wrap {
+  position: relative;
+}
+
+.lang-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.4rem 1.8rem 0.4rem 0.75rem;
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-primary-text);
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748B'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1rem;
+}
+
+.lang-select:focus {
+  outline: none;
+  border-color: var(--color-primary-green);
+}
+
+/* Authenticated user menu dropdown in public navbar */
+.auth-user-dropdown {
+  position: relative;
+}
+
+.user-badge-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  background-color: var(--color-light-green);
+  border: 1px solid #BBF7D0;
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-deep-green);
+  cursor: pointer;
+}
+
+.user-dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  min-width: 180px;
+  display: none;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  z-index: 200;
+}
+
+.user-dropdown-menu.show {
+  display: flex;
+}
+
+.user-dropdown-item {
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-text);
+  text-decoration: none;
+  display: block;
+}
+
+.user-dropdown-item:hover {
+  background-color: var(--color-muted-bg);
+  text-decoration: none;
+}
+
+.user-dropdown-divider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin: 0.25rem 0;
+}
+
+/* 2. HERO SECTION */
+.hero-section {
+  padding: var(--spacing-12) 0 var(--spacing-16) 0;
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--color-bg) 100%);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: var(--spacing-12);
+}
+
+.hero-badge {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-primary-green);
+  background-color: var(--color-light-green);
+  padding: var(--spacing-1) var(--spacing-3);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-3);
+}
+
+.hero-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  color: var(--color-primary-text);
+  margin-bottom: var(--spacing-4);
+  letter-spacing: -0.02em;
+}
+
+.hero-desc {
+  font-size: var(--font-size-lg);
+  color: var(--color-secondary-text);
+  line-height: 1.6;
+  margin-bottom: var(--spacing-8);
+  max-width: 540px;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+  margin-bottom: var(--spacing-4);
+}
+
+.hero-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary-green);
+}
+
+.hero-image-wrap {
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+  aspect-ratio: 3 / 2;
+  background-color: #E2E8F0;
+}
+
+.hero-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 3. AGRICULTURAL IMAGE CARDS (Section 7.2) */
+.agri-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-6);
+}
+
+.agri-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.agri-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.agri-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background-color: var(--color-muted-bg);
+}
+
+.agri-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.agri-card:hover .agri-card-img-wrap img {
+  transform: scale(1.04);
+}
+
+.agri-card-body {
+  padding: var(--spacing-5);
+}
+
+.agri-card-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary-text);
+  margin-bottom: var(--spacing-2);
+}
+
+.agri-card-desc {
+  font-size: var(--font-size-sm);
+  color: var(--color-secondary-text);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+
+/* 4. ABOUT & HOW IT WORKS */
+.about-box {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8) var(--spacing-10);
+  box-shadow: var(--shadow-card);
+}
+
+.how-it-works-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-8);
+}
+
+.workflow-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  box-shadow: var(--shadow-card);
+}
+
+.workflow-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  margin-bottom: var(--spacing-6);
+  padding-bottom: var(--spacing-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.workflow-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  background-color: var(--color-light-green);
+  color: var(--color-primary-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.workflow-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+}
+
+.workflow-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+}
+
+.workflow-step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-deep-green);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.workflow-step-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-text);
+  line-height: 1.5;
+}
+
+/* 5. CALL TO ACTION & FOOTER */
+.cta-banner {
+  background-color: var(--color-deep-green);
+  color: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-12) var(--spacing-8);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner h2 {
+  color: var(--color-white);
+  margin-bottom: var(--spacing-3);
+}
+
+.cta-banner p {
+  color: #D1FAE5;
+  font-size: var(--font-size-lg);
+  max-width: 600px;
+  margin: 0 auto var(--spacing-6) auto;
+}
+
+.cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.cta-banner .btn-primary {
+  background-color: var(--color-fresh-green);
+  color: var(--color-deep-green);
+  border-color: var(--color-fresh-green);
+  font-weight: 700;
+}
+
+.cta-banner .btn-primary:hover {
+  background-color: #86EFAC;
+}
+
+.cta-banner .btn-secondary {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.cta-banner .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Footer (Section 37) */
+.public-footer {
+  margin-top: auto;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-8) 0;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-6);
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: var(--font-size-sm);
+  color: var(--color-secondary-text);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary-green);
+}
+
+.footer-copyright {
+  font-size: var(--font-size-xs);
+  color: var(--color-secondary-text);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-8);
+  }
+  .agri-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .how-it-works-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

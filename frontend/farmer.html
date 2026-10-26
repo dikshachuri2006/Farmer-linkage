@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Farmer Dashboard — FarmerLinkage agricultural marketplace.">
+  <title>Farmer Dashboard — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-layout">
+  <!-- DASHBOARD SIDEBAR -->
+  <div id="dashboard-sidebar-container"></div>
+
+  <!-- MAIN AREA -->
+  <div class="dashboard-main">
+    <div id="dashboard-header-container"></div>
+
+    <main class="dashboard-content">
+      <!-- QUICK ACTIONS BAR -->
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:var(--spacing-4); margin-bottom:var(--spacing-6);">
+        <div>
+          <h2 style="font-size:var(--font-size-xl); margin-bottom:var(--spacing-1);">Welcome to your Producer Portal</h2>
+          <p style="font-size:var(--font-size-sm); color:var(--color-secondary-text); margin-bottom:0;">
+            Track your farmgate produce lots, review commercial buyer offers, and monitor settlement transactions.
+          </p>
+        </div>
+        <div style="display:flex; gap:var(--spacing-3);">
+          <a href="add-produce.html" class="btn btn-primary">➕ Add Produce</a>
+          <a href="farmer-offers.html" class="btn btn-secondary">📩 Review Offers</a>
+        </div>
+      </div>
+
+      <!-- STATS METRIC GRID -->
+      <div id="farmer-stats-grid" class="stats-grid">
+        <div class="loading-container" style="grid-column: 1 / -1;">
+          <div class="spinner"></div>
+          <span>Loading farmer overview metrics...</span>
+        </div>
+      </div>
+
+      <!-- RECENT ACTIVITY SECTION (2-COL) -->
+      <div class="grid grid-cols-2 gap-6">
+        <!-- RECENT PRODUCE LOTS -->
+        <div class="card">
+          <div class="card-header">
+            <h3 style="font-size:var(--font-size-base);">Your Recent Produce Lots</h3>
+            <a href="farmer-produce.html" class="btn btn-sm btn-outline">View All</a>
+          </div>
+          <div class="card-body" id="farmer-recent-lots" style="padding:0;">
+            <div class="loading-container">
+              <div class="spinner"></div>
+              <span>Loading produce listings...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RECENT OFFERS -->
+        <div class="card">
+          <div class="card-header">
+            <h3 style="font-size:var(--font-size-base);">Recent Buyer Offers</h3>
+            <a href="farmer-offers.html" class="btn btn-sm btn-outline">View All</a>
+          </div>
+          <div class="card-body" id="farmer-recent-offers" style="padding:0;">
+            <div class="loading-container">
+              <div class="spinner"></div>
+              <span>Loading buyer offers...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/farmer.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Auth.requireAuth(['FARMER'])) {
+        Farmer.loadDashboard();
+      }
+    });
+  </script>
+</body>
+</html>

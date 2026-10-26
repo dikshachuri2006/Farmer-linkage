@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact FarmerLinkage — Inquiries and platform feedback.">
+  <title>Contact Us — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/public.css">
+</head>
+<body>
+  <!-- Strict Public Navbar -->
+  <div id="public-navbar"></div>
+
+  <main class="section">
+    <div class="container container-narrow">
+      <div class="section-title-wrap">
+        <span class="section-tag">Get in Touch</span>
+        <h1 class="section-heading">Contact FarmerLinkage</h1>
+        <p class="section-desc">Submit your feedback, procurement queries, or technical inquiries to our platform team.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <div id="contact-notice" class="alert alert-info">
+            <span>ℹ️</span>
+            <div>
+              <strong>Backend Integration Notice:</strong> General public contact messaging is scheduled for the next backend release. For formal trade disputes or agreement issues, authenticated users can file direct tickets via the Complaints module in their dashboard.
+            </div>
+          </div>
+
+          <form id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Your Name <span class="required">*</span></label>
+              <input type="text" id="contact-name" class="form-control" placeholder="Enter your full name" required>
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email" class="form-label">Email Address <span class="required">*</span></label>
+              <input type="email" id="contact-email" class="form-control" placeholder="name@example.com" required>
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject" class="form-label">Subject <span class="required">*</span></label>
+              <input type="text" id="contact-subject" class="form-control" placeholder="What is your inquiry about?" required>
+              <div class="form-error"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Message <span class="required">*</span></label>
+              <textarea id="contact-message" rows="5" class="form-control" placeholder="Please provide details regarding your query..." required></textarea>
+              <div class="form-error"></div>
+            </div>
+
+            <div id="contact-feedback" style="display:none; margin-bottom:var(--spacing-4);"></div>
+
+            <button type="submit" id="contact-submit-btn" class="btn btn-primary btn-block">
+              Submit Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Strict Public Footer -->
+  <div id="public-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Navigation.renderPublicNavbar();
+      Navigation.renderPublicFooter();
+
+      const form = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('contact-submit-btn');
+      const feedback = document.getElementById('contact-feedback');
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        Utils.clearFormErrors(form);
+
+        const nameInput = document.getElementById('contact-name');
+        const emailInput = document.getElementById('contact-email');
+        const subjectInput = document.getElementById('contact-subject');
+        const messageInput = document.getElementById('contact-message');
+
+        let isValid = true;
+        if (!nameInput.value.trim()) {
+          Utils.showFieldError(nameInput, 'Full name is required.');
+          isValid = false;
+        }
+        if (!emailInput.value.trim() || !Utils.validateEmail(emailInput.value)) {
+          Utils.showFieldError(emailInput, 'Please provide a valid email address.');
+          isValid = false;
+        }
+        if (!subjectInput.value.trim()) {
+          Utils.showFieldError(subjectInput, 'Subject is required.');
+          isValid = false;
+        }
+        if (!messageInput.value.trim() || messageInput.value.trim().length < 10) {
+          Utils.showFieldError(messageInput, 'Message must be at least 10 characters.');
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // Per Section 9: "If the endpoint does not exist, do not pretend messages were sent. Clearly document that backend submission is not yet available."
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner"></span> Processing...';
+
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Message';
+          feedback.style.display = 'block';
+          feedback.className = 'alert alert-warning';
+          feedback.innerHTML = `
+            <span>⚠️</span>
+            <div><strong>Backend Notice:</strong> General contact form endpoint is not currently mounted on the backend API. No message was dispatched. Please reach out via authenticated dashboard complaints or contact the administrative portal.</div>
+          `;
+        }, 600);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sign in to your FarmerLinkage account to manage produce listings, submit offers, and track agricultural transactions.">
+  <title>Sign In — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/public.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <!-- Strict Public Navbar -->
+  <div id="public-navbar"></div>
+
+  <main class="auth-page">
+    <div class="auth-card-wrap">
+      <!-- FORM SIDE -->
+      <div class="auth-form-side">
+        <div class="auth-header">
+          <h1 data-i18n="auth.welcome">Welcome Back</h1>
+          <p data-i18n="auth.login.desc">Sign in to access your farmer or buyer account.</p>
+        </div>
+
+        <div id="login-alert" class="alert alert-error" style="display: none;"></div>
+
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="username_or_email" class="form-label">
+              <span data-i18n="auth.identifier">Email or Mobile Number</span> <span class="required">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="username_or_email" 
+              name="username_or_email" 
+              class="form-control" 
+              placeholder="e.g. farmer@example.com or 9876543210" 
+              autocomplete="username" 
+              required
+            >
+            <div class="form-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">
+              <span data-i18n="auth.password">Password</span> <span class="required">*</span>
+            </label>
+            <div class="input-password-wrap">
+              <input 
+                type="password" 
+                id="password" 
+                name="password" 
+                class="form-control" 
+                placeholder="Enter your account password" 
+                autocomplete="current-password" 
+                required
+              >
+              <button type="button" id="toggle-pwd-btn" class="password-toggle-btn" aria-label="Toggle password visibility">
+                Show
+              </button>
+            </div>
+            <div class="form-error"></div>
+          </div>
+
+          <button type="submit" id="login-submit-btn" class="btn btn-primary btn-block" style="margin-top: var(--spacing-4);">
+            <span data-i18n="auth.btn.signin">Sign In</span>
+          </button>
+        </form>
+
+        <div class="auth-footer-links">
+          <p>
+            <span data-i18n="auth.no.account">Don't have an account?</span> 
+            <a href="register.html" data-i18n="auth.register.link">Create Account</a>
+          </p>
+          <p style="margin-top: var(--spacing-2);">
+            <a href="index.html" style="color: var(--color-secondary-text);" data-i18n="auth.home.link">&larr; Return to Homepage</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- DESKTOP BANNER SIDE -->
+      <div class="auth-banner-side">
+        <img src="assets/images/hero_farmer_field.jpg" alt="Agricultural landscape" class="auth-banner-img">
+        <div class="auth-banner-overlay"></div>
+        <div class="auth-banner-content">
+          <div style="font-size: 2rem; margin-bottom: var(--spacing-2);">🌱</div>
+          <h3>FarmerLinkage</h3>
+          <p>Direct marketplace connections, fair net price realization, and verified digital trade agreements.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Strict Public Footer -->
+  <div id="public-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // If already logged in, redirect to appropriate role dashboard
+      Auth.redirectIfAuthenticated();
+
+      Navigation.renderPublicNavbar();
+      Navigation.renderPublicFooter();
+
+      // Password toggle
+      const pwdInput = document.getElementById('password');
+      const toggleBtn = document.getElementById('toggle-pwd-btn');
+      toggleBtn.addEventListener('click', () => {
+        const isPassword = pwdInput.type === 'password';
+        pwdInput.type = isPassword ? 'text' : 'password';
+        toggleBtn.textContent = isPassword ? 'Hide' : 'Show';
+      });
+
+      // Login form handler
+      const form = document.getElementById('login-form');
+      const submitBtn = document.getElementById('login-submit-btn');
+      const alertBox = document.getElementById('login-alert');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        Utils.clearFormErrors(form);
+        alertBox.style.display = 'none';
+
+        const idField = document.getElementById('username_or_email');
+        const pwdField = document.getElementById('password');
+
+        let isValid = true;
+        if (!idField.value.trim()) {
+          Utils.showFieldError(idField, 'Email or mobile number is required.');
+          isValid = false;
+        }
+        if (!pwdField.value) {
+          Utils.showFieldError(pwdField, 'Password is required.');
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner"></span> Signing in...';
+
+        try {
+          const user = await Auth.login(idField.value, pwdField.value);
+          Utils.showToast(`Welcome back, ${user.full_name}! Redirecting...`, 'success');
+
+          // Check for redirect query param or redirect based on role
+          const params = new URLSearchParams(window.location.search);
+          const redirect = params.get('redirect');
+
+          setTimeout(() => {
+            if (redirect && !redirect.includes('login') && !redirect.includes('register')) {
+              window.location.href = redirect;
+            } else {
+              window.location.href = Auth.getDashboardUrl();
+            }
+          }, 800);
+        } catch (err) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span data-i18n="auth.btn.signin">Sign In</span>';
+          alertBox.style.display = 'flex';
+          alertBox.innerHTML = `<span>⚠️</span><div>${Utils.escapeHTML(err.message || 'Login failed. Please check your credentials.')}</div>`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

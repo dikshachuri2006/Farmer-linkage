@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage your active and past agricultural produce lots listed on the marketplace.">
+  <title>My Produce Lots — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-layout">
+  <div id="dashboard-sidebar-container"></div>
+
+  <div class="dashboard-main">
+    <div id="dashboard-header-container"></div>
+
+    <main class="dashboard-content">
+      <div id="farmer-produce-container">
+        <div class="loading-container">
+          <div class="spinner spinner-lg"></div>
+          <span>Loading your produce lots...</span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/farmer.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Auth.requireAuth(['FARMER'])) {
+        Farmer.loadProduceList();
+      }
+    });
+  </script>
+</body>
+</html>

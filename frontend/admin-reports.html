@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Export system trade audit datasets and participant registries.">
+  <title>Reports & Data Export — FarmerLinkage Admin</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-layout">
+  <div id="dashboard-sidebar-container"></div>
+
+  <div class="dashboard-main">
+    <div id="dashboard-header-container"></div>
+
+    <main class="dashboard-content">
+      <div style="margin-bottom:var(--spacing-6);">
+        <p style="font-size:var(--font-size-sm); color:var(--color-secondary-text); margin-bottom:0;">
+          Download real-time analytical audit files generated directly from live system transactions and user profiles.
+        </p>
+      </div>
+
+      <div id="admin-reports-container">
+        <div class="loading-container">
+          <div class="spinner spinner-lg"></div>
+          <span>Loading reporting tools...</span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Auth.requireAuth(['ADMIN'])) {
+        Admin.loadReports();
+      }
+    });
+  </script>
+</body>
+</html>

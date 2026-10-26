@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — FarmerLinkage</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/public.css">
+</head>
+<body>
+  <div id="public-navbar"></div>
+
+  <main class="section">
+    <div class="container container-narrow" style="text-align: center;">
+      <div style="font-size: 5rem; margin-bottom: var(--spacing-2);">🌾</div>
+      <h1 style="font-size: var(--font-size-3xl); margin-bottom: var(--spacing-2);">404 — Page Not Found</h1>
+      <p style="font-size: var(--font-size-base); color: var(--color-secondary-text); max-width: 500px; margin: 0 auto var(--spacing-8) auto;">
+        The page or agricultural record you are looking for does not exist or may have been relocated.
+      </p>
+      <div style="display: flex; justify-content: center; gap: var(--spacing-4);">
+        <a href="index.html" class="btn btn-primary">Return to Homepage</a>
+        <a href="marketplace.html" class="btn btn-outline">Explore Marketplace</a>
+      </div>
+    </div>
+  </main>
+
+  <div id="public-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Navigation.renderPublicNavbar();
+      Navigation.renderPublicFooter();
+    });
+  </script>
+</body>
+</html>

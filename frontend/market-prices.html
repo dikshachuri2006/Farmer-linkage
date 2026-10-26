@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore official agricultural mandi market prices, modal rates, and price histories across APMCs.">
+  <title>Agricultural Market Prices — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/public.css">
+  <link rel="stylesheet" href="css/marketplace.css">
+</head>
+<body>
+  <!-- Strict Public Navbar -->
+  <div id="public-navbar"></div>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-title-wrap" style="text-align: left; margin-bottom: var(--spacing-6);">
+        <span class="section-tag">Market Intelligence</span>
+        <h1 class="section-heading">Agricultural Market Prices</h1>
+        <p class="section-desc">
+          Official APMC mandi arrival prices, modal rates, and daily price bands across agricultural markets.
+        </p>
+      </div>
+
+      <!-- FILTER CONTROLS -->
+      <div class="filter-card">
+        <form id="market-prices-filter-form" class="filter-grid" novalidate>
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="price-filter-crop" class="form-label">Commodity / Crop</label>
+            <select id="price-filter-crop" class="form-select">
+              <option value="">All Commodities</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="price-filter-state" class="form-label">State</label>
+            <select id="price-filter-state" class="form-select">
+              <option value="">All States</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="price-filter-market" class="form-label">Market (Mandi)</label>
+            <select id="price-filter-market" class="form-select">
+              <option value="">All Mandis / APMCs</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="price-filter-start-date" class="form-label">Start Date</label>
+            <input type="date" id="price-filter-start-date" class="form-control">
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="price-filter-end-date" class="form-label">End Date</label>
+            <input type="date" id="price-filter-end-date" class="form-control">
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="price-sort-by" class="form-label">Sort By</label>
+            <select id="price-sort-by" class="form-select">
+              <option value="price_date">Price Date</option>
+              <option value="modal_price">Modal Price</option>
+              <option value="min_price">Min Price</option>
+              <option value="max_price">Max Price</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="price-sort-order" class="form-label">Sort Order</label>
+            <select id="price-sort-order" class="form-select">
+              <option value="desc">Newest / Highest First</option>
+              <option value="asc">Oldest / Lowest First</option>
+            </select>
+          </div>
+
+          <div class="filter-actions">
+            <button type="submit" class="btn btn-primary" style="flex:1;">Apply Filters</button>
+            <button type="button" id="btn-clear-price-filters" class="btn btn-outline">Clear</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- PRICES TABLE CONTAINER -->
+      <div id="market-prices-table-container">
+        <div class="loading-container">
+          <div class="spinner spinner-lg"></div>
+          <span>Loading official mandi market price records...</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Strict Public Footer -->
+  <div id="public-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/market-prices.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Navigation.renderPublicNavbar();
+      Navigation.renderPublicFooter();
+      MarketPrices.init();
+    });
+  </script>
+</body>
+</html>

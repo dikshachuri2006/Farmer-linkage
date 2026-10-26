@@ -1,0 +1,324 @@
+/* ==========================================================================
+   FarmerLinkage — Role-Based Dashboard Styles (Farmer, Buyer, Admin)
+   ========================================================================== */
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+/* 1. SIDEBAR NAVIGATION */
+.dashboard-sidebar {
+  width: 260px;
+  background-color: var(--color-deep-green);
+  color: var(--color-white);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 150;
+  transition: transform var(--transition-normal);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0 var(--spacing-6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-white);
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.sidebar-brand:hover {
+  color: var(--color-fresh-green);
+  text-decoration: none;
+}
+
+.sidebar-badge {
+  font-size: 0.65rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2px 6px;
+  border-radius: var(--radius-full);
+  margin-left: auto;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-4) var(--spacing-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.sidebar-nav-title {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.5);
+  padding: var(--spacing-3) var(--spacing-3) var(--spacing-1) var(--spacing-3);
+  margin-top: var(--spacing-2);
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: 0.65rem 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.sidebar-nav-item.active {
+  background-color: var(--color-fresh-green);
+  color: var(--color-deep-green);
+  font-weight: 700;
+}
+
+.sidebar-nav-icon {
+  font-size: 1.1rem;
+  width: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-nav-badge {
+  margin-left: auto;
+  background-color: var(--color-error);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: var(--radius-full);
+}
+
+.sidebar-footer {
+  padding: var(--spacing-4) var(--spacing-3);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logout-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.6rem 0.85rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-logout-btn:hover {
+  background-color: rgba(220, 38, 38, 0.2);
+  border-color: var(--color-error);
+  color: var(--color-white);
+}
+
+/* 2. DASHBOARD MAIN & HEADER */
+.dashboard-main {
+  flex: 1;
+  margin-left: 260px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.dashboard-header {
+  height: 64px;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 var(--spacing-8);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.sidebar-toggle-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--color-primary-text);
+  padding: var(--spacing-1);
+}
+
+.page-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary-text);
+  margin-bottom: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.user-profile-badge {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: 0.35rem 0.75rem;
+  background-color: var(--color-muted-bg);
+  border-radius: var(--radius-full);
+}
+
+.user-avatar-circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-primary-green);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.user-profile-name {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: var(--color-primary-text);
+}
+
+.user-profile-role {
+  font-size: 0.65rem;
+  color: var(--color-secondary-text);
+  text-transform: uppercase;
+}
+
+/* 3. DASHBOARD CONTENT */
+.dashboard-content {
+  padding: var(--spacing-8);
+  flex: 1;
+}
+
+/* 4. METRIC STAT CARDS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-8);
+}
+
+.stat-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-4);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.stat-icon.green { background-color: var(--color-light-green); color: var(--color-primary-green); }
+.stat-icon.blue { background-color: var(--color-info-light); color: var(--color-info); }
+.stat-icon.amber { background-color: var(--color-warning-light); color: var(--color-warning); }
+.stat-icon.purple { background-color: #F3E8FF; color: #7E22CE; }
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-primary-text);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-secondary-text);
+}
+
+/* Mobile Sidebar Overlay */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 140;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .dashboard-sidebar {
+    transform: translateX(-100%);
+  }
+  .dashboard-sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar-overlay.active {
+    display: block;
+  }
+  .dashboard-main {
+    margin-left: 0;
+  }
+  .sidebar-toggle-btn {
+    display: block;
+  }
+  .dashboard-header {
+    padding: 0 var(--spacing-4);
+  }
+  .dashboard-content {
+    padding: var(--spacing-4);
+  }
+}

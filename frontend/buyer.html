@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Buyer Dashboard — FarmerLinkage agricultural procurement portal.">
+  <title>Buyer Dashboard — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-layout">
+  <div id="dashboard-sidebar-container"></div>
+
+  <div class="dashboard-main">
+    <div id="dashboard-header-container"></div>
+
+    <main class="dashboard-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:var(--spacing-4); margin-bottom:var(--spacing-6);">
+        <div>
+          <h2 style="font-size:var(--font-size-xl); margin-bottom:var(--spacing-1);">Welcome to your Buyer Procurement Portal</h2>
+          <p style="font-size:var(--font-size-sm); color:var(--color-secondary-text); margin-bottom:0;">
+            Source produce directly from farmgates, review submitted purchase bids, and track trade settlements.
+          </p>
+        </div>
+        <div style="display:flex; gap:var(--spacing-3);">
+          <a href="marketplace.html" class="btn btn-primary">🛒 Browse Marketplace</a>
+          <a href="buyer-offers.html" class="btn btn-secondary">🏷️ My Offers</a>
+        </div>
+      </div>
+
+      <!-- STATS METRIC GRID -->
+      <div id="buyer-stats-grid" class="stats-grid">
+        <div class="loading-container" style="grid-column: 1 / -1;">
+          <div class="spinner"></div>
+          <span>Loading buyer overview metrics...</span>
+        </div>
+      </div>
+
+      <!-- RECENT ACTIVITY (2-COL) -->
+      <div class="grid grid-cols-2 gap-6">
+        <!-- RECENT OFFERS -->
+        <div class="card">
+          <div class="card-header">
+            <h3 style="font-size:var(--font-size-base);">Your Submitted Purchase Offers</h3>
+            <a href="buyer-offers.html" class="btn btn-sm btn-outline">View All</a>
+          </div>
+          <div class="card-body" id="buyer-recent-offers" style="padding:0;">
+            <div class="loading-container">
+              <div class="spinner"></div>
+              <span>Loading offers...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RECENT TRANSACTIONS -->
+        <div class="card">
+          <div class="card-header">
+            <h3 style="font-size:var(--font-size-base);">Trade Transactions & Receipts</h3>
+            <a href="transactions.html" class="btn btn-sm btn-outline">View All</a>
+          </div>
+          <div class="card-body" id="buyer-recent-txns" style="padding:0;">
+            <div class="loading-container">
+              <div class="spinner"></div>
+              <span>Loading trade records...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/buyer.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Auth.requireAuth(['BUYER'])) {
+        Buyer.loadDashboard();
+      }
+    });
+  </script>
+</body>
+</html>

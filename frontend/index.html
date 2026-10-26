@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FarmerLinkage connects agricultural farmers directly with commercial buyers, enabling transparent marketplace discovery, net-realization calculation, and verified digital trade.">
+  <title>FarmerLinkage — Connecting Farmers Directly with Buyers</title>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/public.css">
+</head>
+<body>
+  <!-- STRICT PUBLIC NAVBAR (Section 6) -->
+  <div id="public-navbar"></div>
+
+  <main>
+    <!-- 7.1 HERO SECTION -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <!-- LEFT SIDE -->
+        <div class="hero-content">
+          <span class="hero-badge" data-i18n="hero.tag">Digital Agricultural Marketplace</span>
+          <h1 class="hero-title" data-i18n="hero.title">Connecting Farmers Directly with Buyers</h1>
+          <p class="hero-desc" data-i18n="hero.desc">
+            Discover agricultural produce, explore market prices, and connect farmers with buyers through a transparent digital marketplace.
+          </p>
+          <div class="hero-actions">
+            <a href="marketplace.html" class="btn btn-lg btn-primary" data-i18n="hero.btn.explore">Explore Marketplace</a>
+            <a href="register.html?role=FARMER" class="btn btn-lg btn-secondary" data-i18n="hero.btn.sell">Start Selling</a>
+          </div>
+          <div>
+            <a href="market-prices.html" class="hero-text-link" data-i18n="hero.link.prices">Explore Market Prices &rarr;</a>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE: Agricultural Hero Image -->
+        <div class="hero-image-wrap">
+          <img src="assets/images/hero_farmer_field.jpg" alt="Indian farmer in a lush green agricultural field with freshly harvested produce at sunrise" loading="eager">
+        </div>
+      </div>
+    </section>
+
+    <!-- 7.2 AGRICULTURAL IMAGE CARDS -->
+    <section class="section" style="background-color: var(--color-white); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Marketplace Categories</span>
+          <h2 class="section-heading" data-i18n="cards.heading">From Our Farms to Your Market</h2>
+          <p class="section-desc">Discover diverse agricultural commodities sourced straight from farmgates across the nation.</p>
+        </div>
+
+        <div class="agri-cards-grid">
+          <!-- CARD 1 -->
+          <article class="agri-card">
+            <div class="agri-card-img-wrap">
+              <img src="assets/images/fresh_vegetables.jpg" alt="Freshly harvested farm vegetables including tomatoes, onions, spinach and cabbage arranged in rustic baskets" loading="lazy">
+            </div>
+            <div class="agri-card-body">
+              <h3 class="agri-card-title" data-i18n="cards.veg.title">Fresh Vegetables</h3>
+              <p class="agri-card-desc" data-i18n="cards.veg.desc">Discover agricultural produce from farms.</p>
+            </div>
+          </article>
+
+          <!-- CARD 2 -->
+          <article class="agri-card">
+            <div class="agri-card-img-wrap">
+              <img src="assets/images/grains_cereals.jpg" alt="Harvested agricultural commodities including wheat, basmati rice, lentils, and pulses in burlap sacks" loading="lazy">
+            </div>
+            <div class="agri-card-body">
+              <h3 class="agri-card-title" data-i18n="cards.grains.title">Grains and Cereals</h3>
+              <p class="agri-card-desc" data-i18n="cards.grains.desc">Explore agricultural commodities.</p>
+            </div>
+          </article>
+
+          <!-- CARD 3 -->
+          <article class="agri-card">
+            <div class="agri-card-img-wrap">
+              <img src="assets/images/farmers_farming.jpg" alt="Agricultural farmers inspecting healthy green crops in an open farm field under clear blue sky" loading="lazy">
+            </div>
+            <div class="agri-card-body">
+              <h3 class="agri-card-title" data-i18n="cards.farming.title">Farmers and Farming</h3>
+              <p class="agri-card-desc" data-i18n="cards.farming.desc">Connect agricultural production with market opportunities.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7.3 ABOUT INTRODUCTION -->
+    <section class="section">
+      <div class="container container-narrow">
+        <div class="about-box">
+          <div style="text-align:center; margin-bottom:var(--spacing-4);">
+            <span class="section-tag">Digital Agricultural Infrastructure</span>
+            <h2 class="section-heading" data-i18n="about.heading">About FarmerLinkage</h2>
+          </div>
+          <p data-i18n="about.desc">
+            FarmerLinkage is a digital agricultural marketplace built to strengthen direct connections between farmers and commercial buyers. By removing intermediaries and providing transparent price discovery, we facilitate fair trade agreements, reliable transactions, and improved farmgate net realizations.
+          </p>
+          <div style="margin-top:var(--spacing-6); text-align:center;">
+            <a href="about.html" class="btn btn-outline">Read Full Mission &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7.4 HOW IT WORKS -->
+    <section class="section" id="how-it-works" style="background-color: var(--color-white); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Platform Workflows</span>
+          <h2 class="section-heading" data-i18n="how.heading">How It Works</h2>
+          <p class="section-desc">Streamlined processes for agricultural producers and commercial buyers.</p>
+        </div>
+
+        <div class="how-it-works-grid">
+          <!-- FOR FARMERS -->
+          <div class="workflow-card">
+            <div class="workflow-card-header">
+              <div class="workflow-card-icon">👨‍🌾</div>
+              <div>
+                <h3 style="font-size:var(--font-size-lg);" data-i18n="how.farmer.title">For Farmers</h3>
+                <span style="font-size:var(--font-size-xs); color:var(--color-secondary-text);">Grow, list, and sell produce with confidence</span>
+              </div>
+            </div>
+            <ol class="workflow-steps">
+              <li class="workflow-step-item">
+                <span class="workflow-step-num">1</span>
+                <span class="workflow-step-text" data-i18n="how.farmer.step1">Register and verify your agricultural profile.</span>
+              </li>
+              <li class="workflow-step-item">
+                <span class="workflow-step-num">2</span>
+                <span class="workflow-step-text" data-i18n="how.farmer.step2">List your available produce lots with prices and location.</span>
+              </li>
+              <li class="workflow-step-item">
+                <span class="workflow-step-num">3</span>
+                <span class="workflow-step-text" data-i18n="how.farmer.step3">Receive, review, and accept competitive buyer offers.</span>
+              </li>
+              <li class="workflow-step-item">
+                <span class="workflow-step-num">4</span>
+                <span class="workflow-step-text" data-i18n="how.farmer.step4">Execute verified digital transactions and settlement receipts.</span>
+              </li>
+            </ol>
+          </div>
+
+          <!-- FOR BUYERS -->
+          <div class="workflow-card">
+            <div class="workflow-card-header">
+              <div class="workflow-card-icon">🏪</div>
+              <div>
+                <h3 style="font-size:var(--font-size-lg);" data-i18n="how.buyer.title">For Buyers</h3>
+                <span style="font-size:var(--font-size-xs); color:var(--color-secondary-text);">Procure quality crops directly at farmgate</span>
+              </div>
+            </div>
+            <ol class="workflow-steps">
+              <li class="workflow-step-item">
+                <span class="workflow-step-num">1</span>
+                <span class="workflow-step-text" data-i18n="how.buyer.step1">Register and submit your commercial procurement profile.</span>
+              </li>
+              <li class="workflow-step-item">
+                <span class="workflow-step-num">2</span>
+                <span class="workflow-step-text" data-i18n="how.buyer.step2">Browse available farmgate produce listings nationwide.</span>
+              </li>
+              <li class="workflow-step-item">
+                <span class="workflow-step-num">3</span>
+                <span class="workflow-step-text" data-i18n="how.buyer.step3">Submit binding purchase offers directly to farmers.</span>
+              </li>
+              <li class="workflow-step-item">
+                <span class="workflow-step-num">4</span>
+                <span class="workflow-step-text" data-i18n="how.buyer.step4">Track agreement fulfillment and settlement receipts.</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7.5 MARKET-PRICE INTRODUCTION -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-tag">Market Intelligence</span>
+          <h2 class="section-heading" data-i18n="prices.intro.heading">Explore Agricultural Market Prices</h2>
+          <p class="section-desc" data-i18n="prices.intro.desc">
+            Stay informed with daily mandi arrival prices across state APMCs, helping you make data-driven selling and sourcing decisions.
+          </p>
+        </div>
+
+        <div id="market-price-preview-container" style="margin-bottom:var(--spacing-6);">
+          <!-- Dynamically populated by js/homepage.js if records exist in backend -->
+          <div class="loading-container">
+            <div class="spinner"></div>
+            <span>Checking latest market price records...</span>
+          </div>
+        </div>
+
+        <div style="text-align:center;">
+          <a href="market-prices.html" class="btn btn-outline" data-i18n="prices.intro.btn">View All Market Prices</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7.6 FINAL CALL TO ACTION -->
+    <section class="section-sm">
+      <div class="container">
+        <div class="cta-banner">
+          <h2 data-i18n="cta.heading">Join the FarmerLinkage Community</h2>
+          <p data-i18n="cta.desc">Whether you grow agricultural produce or source it for your business, start exploring FarmerLinkage.</p>
+          <div class="cta-actions">
+            <a href="register.html" class="btn btn-lg btn-primary" data-i18n="nav.register">Create Account</a>
+            <a href="marketplace.html" class="btn btn-lg btn-secondary" data-i18n="hero.btn.explore">Explore Marketplace</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 7.7 COMPACT FOOTER (Section 37) -->
+  <div id="public-footer"></div>
+
+  <!-- Shared JavaScript Files -->
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/homepage.js"></script>
+</body>
+</html>

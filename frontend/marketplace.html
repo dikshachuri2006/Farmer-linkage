@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover agricultural produce lots posted directly by verified farmers across India.">
+  <title>Marketplace — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/public.css">
+  <link rel="stylesheet" href="css/marketplace.css">
+</head>
+<body>
+  <!-- Strict Public Navbar -->
+  <div id="public-navbar"></div>
+
+  <main class="section">
+    <div class="container">
+      <!-- PAGE INTRODUCTION -->
+      <div class="section-title-wrap" style="text-align: left; margin-bottom: var(--spacing-8);">
+        <span class="section-tag">Direct Trade</span>
+        <h1 class="section-heading" data-i18n="market.heading">Explore Agricultural Produce</h1>
+        <p class="section-desc" data-i18n="market.desc">
+          Discover available produce and connect directly with farmers through FarmerLinkage.
+        </p>
+      </div>
+
+      <!-- SEARCH & FILTERS -->
+      <div class="filter-card">
+        <form id="marketplace-filter-form" class="filter-grid" novalidate>
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="marketplace-search" class="form-label">Search Produce</label>
+            <input type="text" id="marketplace-search" class="form-control" placeholder="Crop, variety, or location..." data-i18n-placeholder="market.search">
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="filter-crop" class="form-label" data-i18n="market.filter.crop">Crop</label>
+            <select id="filter-crop" class="form-select">
+              <option value="">All Crops</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="filter-state" class="form-label" data-i18n="market.filter.state">State</label>
+            <input type="text" id="filter-state" class="form-control" placeholder="e.g. Maharashtra">
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="filter-grade" class="form-label">Quality Grade</label>
+            <select id="filter-grade" class="form-select">
+              <option value="">Any Quality Grade</option>
+              <option value="GRADE_A">Grade A (Premium)</option>
+              <option value="GRADE_B">Grade B (Standard)</option>
+              <option value="GRADE_C">Grade C (Commercial)</option>
+              <option value="FAIR_AVERAGE_QUALITY">Fair Average Quality (FAQ)</option>
+            </select>
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="filter-min-price" class="form-label" data-i18n="market.filter.minprice">Min Price</label>
+            <input type="number" id="filter-min-price" class="form-control" placeholder="₹ Min" min="0">
+          </div>
+
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="filter-max-price" class="form-label" data-i18n="market.filter.maxprice">Max Price</label>
+            <input type="number" id="filter-max-price" class="form-control" placeholder="₹ Max" min="0">
+          </div>
+
+          <div class="filter-actions">
+            <button type="submit" class="btn btn-primary" style="flex:1;">Filter</button>
+            <button type="button" id="btn-clear-filters" class="btn btn-outline" data-i18n="market.btn.clear">Clear</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- PRODUCE LISTINGS GRID -->
+      <div id="produce-grid" class="produce-grid">
+        <div class="loading-container" style="grid-column: 1 / -1;">
+          <div class="spinner spinner-lg"></div>
+          <span>Loading marketplace produce listings...</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Strict Public Footer -->
+  <div id="public-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/marketplace.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Navigation.renderPublicNavbar();
+      Navigation.renderPublicFooter();
+      Marketplace.initMarketplace();
+    });
+  </script>
+</body>
+</html>

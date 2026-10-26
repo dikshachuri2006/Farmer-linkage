@@ -1,0 +1,247 @@
+/* ==========================================================================
+   FarmerLinkage — Marketplace, Market Prices & Price Discovery Styles
+   ========================================================================== */
+
+/* 1. FILTER CONTROLS BAR */
+.filter-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-5);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--spacing-6);
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-4);
+  align-items: flex-end;
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+/* 2. MARKETPLACE LISTING CARDS */
+.produce-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.produce-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.produce-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.produce-card-top {
+  position: relative;
+  background-color: var(--color-light-green);
+  padding: var(--spacing-6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.produce-crop-icon {
+  font-size: 3rem;
+}
+
+.produce-card-status {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+.produce-card-body {
+  padding: var(--spacing-5);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.produce-card-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-primary-text);
+  margin-bottom: var(--spacing-1);
+}
+
+.produce-card-subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--color-secondary-text);
+  margin-bottom: var(--spacing-4);
+}
+
+.produce-meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-2) 0;
+  border-bottom: 1px solid #F1F5F9;
+}
+
+.produce-meta-row:last-of-type {
+  border-bottom: none;
+  margin-bottom: var(--spacing-4);
+}
+
+.produce-meta-label {
+  color: var(--color-secondary-text);
+}
+
+.produce-meta-val {
+  font-weight: 600;
+  color: var(--color-primary-text);
+}
+
+.produce-price-highlight {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-deep-green);
+}
+
+.produce-card-footer {
+  padding-top: var(--spacing-3);
+  margin-top: auto;
+}
+
+/* 3. LISTING DETAILS VIEW */
+.listing-details-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--spacing-8);
+}
+
+.listing-main-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-8);
+  box-shadow: var(--shadow-card);
+}
+
+.listing-offer-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-card);
+  position: sticky;
+  top: 80px;
+}
+
+.detail-specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-4);
+  margin: var(--spacing-6) 0;
+}
+
+.detail-spec-box {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-4);
+}
+
+.detail-spec-label {
+  font-size: var(--font-size-xs);
+  color: var(--color-secondary-text);
+  margin-bottom: var(--spacing-1);
+}
+
+.detail-spec-value {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-primary-text);
+}
+
+/* 4. PRICE DISCOVERY ENGINE CARDS & COMPARISON */
+.calc-input-card {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-6);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--spacing-8);
+}
+
+.candidate-market-row {
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-4);
+  margin-bottom: var(--spacing-3);
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.5fr 1fr auto;
+  gap: var(--spacing-3);
+  align-items: center;
+}
+
+.realization-results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: var(--spacing-6);
+  margin-top: var(--spacing-6);
+}
+
+.recommendation-card {
+  background-color: var(--color-white);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-6);
+  position: relative;
+  transition: transform var(--transition-fast);
+}
+
+.recommendation-card.best-option {
+  border-color: var(--color-primary-green);
+  box-shadow: 0 0 0 1px var(--color-primary-green), var(--shadow-md);
+}
+
+.best-badge {
+  position: absolute;
+  top: -12px;
+  right: 1.5rem;
+  background-color: var(--color-deep-green);
+  color: var(--color-white);
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+}
+
+.net-realization-value {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--color-deep-green);
+  margin: var(--spacing-2) 0;
+}
+
+@media (max-width: 900px) {
+  .listing-details-grid {
+    grid-template-columns: 1fr;
+  }
+  .candidate-market-row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Manage your farmer profile, agricultural location, and landholding details.">
+  <title>Farmer Profile — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-layout">
+  <div id="dashboard-sidebar-container"></div>
+
+  <div class="dashboard-main">
+    <div id="dashboard-header-container"></div>
+
+    <main class="dashboard-content">
+      <div class="container-narrow" style="margin: 0 auto;">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 style="font-size:var(--font-size-lg); margin-bottom:2px;">Agricultural Profile Details</h2>
+              <p style="font-size:var(--font-size-xs); color:var(--color-secondary-text); margin-bottom:0;">
+                Provide accurate farmgate location coordinates to enable accurate distance and net-realization calculations.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div id="profile-alert" class="alert alert-error" style="display:none;"></div>
+            <div id="profile-success" class="alert alert-success" style="display:none;"></div>
+
+            <form id="farmer-profile-form" novalidate>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label for="profile-state" class="form-label">State <span class="required">*</span></label>
+                  <input type="text" id="profile-state" class="form-control" placeholder="e.g. Maharashtra" required>
+                  <div class="form-error"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="profile-district" class="form-label">District <span class="required">*</span></label>
+                  <input type="text" id="profile-district" class="form-control" placeholder="e.g. Nashik" required>
+                  <div class="form-error"></div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label for="profile-taluka" class="form-label">Taluka / Tehsil</label>
+                  <input type="text" id="profile-taluka" class="form-control" placeholder="e.g. Niphad">
+                </div>
+
+                <div class="form-group">
+                  <label for="profile-village" class="form-label">Village / Town</label>
+                  <input type="text" id="profile-village" class="form-control" placeholder="e.g. Lasalgaon">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label for="profile-pincode" class="form-label">Postal Pincode (6 Digits) <span class="required">*</span></label>
+                  <input type="text" id="profile-pincode" class="form-control" placeholder="e.g. 422306" maxlength="6" required>
+                  <div class="form-error"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="profile-land-area" class="form-label">Total Landholding Area (Acres)</label>
+                  <input type="number" id="profile-land-area" class="form-control" placeholder="e.g. 5.5" step="0.1" min="0">
+                </div>
+              </div>
+
+              <div style="margin-top:var(--spacing-6); text-align:right;">
+                <button type="submit" id="save-profile-btn" class="btn btn-primary">
+                  Save Profile Changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/farmer.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Auth.requireAuth(['FARMER'])) {
+        Farmer.loadProfile();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate and discover optimal net farmgate realizations across multiple mandis and buyer offers after transport and mandi deductions.">
+  <title>Price Discovery & Net Realization — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/public.css">
+  <link rel="stylesheet" href="css/marketplace.css">
+</head>
+<body>
+  <!-- Strict Public Navbar -->
+  <div id="public-navbar"></div>
+
+  <main class="section">
+    <div class="container">
+      <div class="section-title-wrap" style="text-align: left; margin-bottom: var(--spacing-6);">
+        <span class="section-tag">Net-Realization Engine</span>
+        <h1 class="section-heading" data-i18n="disc.heading">Price Discovery and Net Realization</h1>
+        <p class="section-desc" data-i18n="disc.desc">
+          Compare potential net earnings across multiple mandis and buyer offers after transport and mandi deductions.
+        </p>
+      </div>
+
+      <div class="calc-input-card">
+        <form id="price-discovery-form" novalidate>
+          <h2 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4);">1. Your Produce & Farmgate Origin</h2>
+          
+          <div class="grid grid-cols-4 gap-4" style="margin-bottom: var(--spacing-6);">
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="disc-crop-name" class="form-label">Crop / Commodity <span class="required">*</span></label>
+              <input type="text" id="disc-crop-name" class="form-control" placeholder="e.g. Onion, Tomato, Wheat" value="Onion" required>
+            </div>
+
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="disc-sale-qty" class="form-label">Sale Quantity <span class="required">*</span></label>
+              <input type="number" id="disc-sale-qty" class="form-control" placeholder="Quantity" value="50" min="1" step="any" required>
+            </div>
+
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="disc-qty-unit" class="form-label">Quantity Unit <span class="required">*</span></label>
+              <select id="disc-qty-unit" class="form-select">
+                <option value="quintal" selected>Quintal (100 kg)</option>
+                <option value="kg">Kilogram (kg)</option>
+                <option value="tonne">Metric Tonne (1,000 kg)</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="margin-bottom:0;">
+              <label for="disc-farmer-loc" class="form-label">Farmgate Origin Location</label>
+              <input type="text" id="disc-farmer-loc" class="form-control" placeholder="e.g. Niphad, Nashik" value="Niphad, Nashik">
+            </div>
+          </div>
+
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: var(--spacing-4); border-top: 1px solid var(--color-border); padding-top: var(--spacing-6);">
+            <div>
+              <h2 style="font-size: var(--font-size-xl); margin-bottom: 2px;">2. Candidate Markets & Buyer Offers</h2>
+              <p style="font-size: var(--font-size-xs); color: var(--color-secondary-text); margin-bottom:0;">
+                Add mandis or direct buyer bids to evaluate true net earnings after transport and cess.
+              </p>
+            </div>
+            <button type="button" id="btn-add-candidate" class="btn btn-sm btn-secondary">
+              ➕ Add Another Candidate
+            </button>
+          </div>
+
+          <div id="candidate-options-container">
+            <!-- Dynamically populated by js/price-discovery.js -->
+          </div>
+
+          <div style="margin-top: var(--spacing-6); text-align: center;">
+            <button type="submit" class="btn btn-lg btn-primary" style="min-width: 240px;">
+              ⚖️ Run Net-Realization Comparison
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- RESULTS CONTAINER -->
+      <div id="discovery-results-container"></div>
+    </div>
+  </main>
+
+  <!-- Strict Public Footer -->
+  <div id="public-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/price-discovery.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Navigation.renderPublicNavbar();
+      Navigation.renderPublicFooter();
+      PriceDiscovery.init();
+    });
+  </script>
+</body>
+</html>

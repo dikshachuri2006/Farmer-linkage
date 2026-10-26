@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register an account on FarmerLinkage as an agricultural producer (Farmer) or commercial buyer.">
+  <title>Create Account — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/public.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+  <!-- Strict Public Navbar -->
+  <div id="public-navbar"></div>
+
+  <main class="auth-page">
+    <div class="auth-card-wrap">
+      <!-- FORM SIDE -->
+      <div class="auth-form-side">
+        <div class="auth-header">
+          <h1 data-i18n="auth.register.title">Create Account</h1>
+          <p data-i18n="auth.register.desc">Join FarmerLinkage as a Producer or Procuring Buyer.</p>
+        </div>
+
+        <div id="register-alert" class="alert alert-error" style="display: none;"></div>
+        <div id="register-success" class="alert alert-success" style="display: none;"></div>
+
+        <form id="register-form" novalidate>
+          <!-- ROLE SELECTION -->
+          <div class="form-group">
+            <label class="form-label">
+              <span data-i18n="auth.role">I am joining as a</span> <span class="required">*</span>
+            </label>
+            <div class="role-selector-grid">
+              <label class="role-card-option" id="role-label-farmer">
+                <input type="radio" name="role" value="FARMER" checked>
+                <div class="role-card-icon">👨‍🌾</div>
+                <div>
+                  <div class="role-card-label" data-i18n="auth.role.farmer">Farmer / Producer</div>
+                  <div class="role-card-sub">List crops & get buyer offers</div>
+                </div>
+              </label>
+
+              <label class="role-card-option" id="role-label-buyer">
+                <input type="radio" name="role" value="BUYER">
+                <div class="role-card-icon">🏪</div>
+                <div>
+                  <div class="role-card-label" data-i18n="auth.role.buyer">Commercial Buyer</div>
+                  <div class="role-card-sub">Source directly from farmgate</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="full_name" class="form-label">
+              <span data-i18n="auth.fullname">Full Name</span> <span class="required">*</span>
+            </label>
+            <input type="text" id="full_name" name="full_name" class="form-control" placeholder="e.g. Ramesh Patil" required>
+            <div class="form-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">
+              <span data-i18n="auth.email">Email Address</span> <span class="required">*</span>
+            </label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="ramesh@example.com" required>
+            <div class="form-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone_number" class="form-label">
+              <span data-i18n="auth.phone">10-Digit Mobile Number</span> <span class="required">*</span>
+            </label>
+            <input type="tel" id="phone_number" name="phone_number" class="form-control" placeholder="9876543210" maxlength="10" required>
+            <div class="form-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="password" class="form-label">
+              <span data-i18n="auth.password">Password</span> (min. 8 characters) <span class="required">*</span>
+            </label>
+            <div class="input-password-wrap">
+              <input type="password" id="password" name="password" class="form-control" placeholder="At least 8 characters" required>
+              <button type="button" id="toggle-pwd-btn" class="password-toggle-btn" aria-label="Toggle password visibility">Show</button>
+            </div>
+            <div class="form-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm_password" class="form-label">
+              <span data-i18n="auth.confirmpwd">Confirm Password</span> <span class="required">*</span>
+            </label>
+            <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Re-enter your password" required>
+            <div class="form-error"></div>
+          </div>
+
+          <button type="submit" id="register-submit-btn" class="btn btn-primary btn-block" style="margin-top: var(--spacing-4);">
+            <span data-i18n="auth.btn.register">Create Account</span>
+          </button>
+        </form>
+
+        <div class="auth-footer-links">
+          <p>
+            <span data-i18n="auth.have.account">Already have an account?</span> 
+            <a href="login.html" data-i18n="auth.login.link">Sign In</a>
+          </p>
+          <p style="margin-top: var(--spacing-2);">
+            <a href="index.html" style="color: var(--color-secondary-text);" data-i18n="auth.home.link">&larr; Return to Homepage</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- BANNER SIDE -->
+      <div class="auth-banner-side">
+        <img src="assets/images/fresh_vegetables.jpg" alt="Fresh farm produce" class="auth-banner-img">
+        <div class="auth-banner-overlay"></div>
+        <div class="auth-banner-content">
+          <div style="font-size: 2rem; margin-bottom: var(--spacing-2);">🌾</div>
+          <h3>Transparent Agricultural Trade</h3>
+          <p>Connect directly, eliminate middlemen, and formalize trade with verified digital settlement receipts.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Strict Public Footer -->
+  <div id="public-footer"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      Auth.redirectIfAuthenticated();
+
+      Navigation.renderPublicNavbar();
+      Navigation.renderPublicFooter();
+
+      // Check query param for default role
+      const params = new URLSearchParams(window.location.search);
+      const preRole = params.get('role');
+      if (preRole === 'BUYER') {
+        const buyerRadio = document.querySelector('input[name="role"][value="BUYER"]');
+        if (buyerRadio) buyerRadio.checked = true;
+      }
+
+      // Password toggle
+      const pwdInput = document.getElementById('password');
+      const toggleBtn = document.getElementById('toggle-pwd-btn');
+      toggleBtn.addEventListener('click', () => {
+        const isPassword = pwdInput.type === 'password';
+        pwdInput.type = isPassword ? 'text' : 'password';
+        toggleBtn.textContent = isPassword ? 'Hide' : 'Show';
+      });
+
+      // Form validation & submission
+      const form = document.getElementById('register-form');
+      const submitBtn = document.getElementById('register-submit-btn');
+      const alertBox = document.getElementById('register-alert');
+      const successBox = document.getElementById('register-success');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        Utils.clearFormErrors(form);
+        alertBox.style.display = 'none';
+        successBox.style.display = 'none';
+
+        const nameField = document.getElementById('full_name');
+        const emailField = document.getElementById('email');
+        const phoneField = document.getElementById('phone_number');
+        const pwdField = document.getElementById('password');
+        const cpwdField = document.getElementById('confirm_password');
+        const roleSelected = document.querySelector('input[name="role"]:checked')?.value || 'FARMER';
+
+        let isValid = true;
+        if (!nameField.value.trim() || nameField.value.trim().length < 2) {
+          Utils.showFieldError(nameField, 'Full name must be at least 2 characters.');
+          isValid = false;
+        }
+        if (!emailField.value.trim() || !Utils.validateEmail(emailField.value)) {
+          Utils.showFieldError(emailField, 'Please enter a valid email address.');
+          isValid = false;
+        }
+        if (!phoneField.value.trim() || !Utils.validatePhone(phoneField.value)) {
+          Utils.showFieldError(phoneField, 'Please enter a valid 10-digit Indian mobile number.');
+          isValid = false;
+        }
+        if (!pwdField.value || pwdField.value.length < 8) {
+          Utils.showFieldError(pwdField, 'Password must be at least 8 characters long.');
+          isValid = false;
+        }
+        if (pwdField.value !== cpwdField.value) {
+          Utils.showFieldError(cpwdField, 'Passwords do not match.');
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner"></span> Creating account...';
+
+        try {
+          const result = await Auth.register({
+            full_name: nameField.value,
+            email: emailField.value,
+            phone_number: phoneField.value,
+            password: pwdField.value,
+            role: roleSelected,
+          });
+
+          successBox.style.display = 'flex';
+          successBox.innerHTML = `
+            <span>✅</span>
+            <div><strong>Registration successful!</strong> Your ${result.role} account has been created. Redirecting to login...</div>
+          `;
+          Utils.showToast('Account created successfully! Please sign in.', 'success');
+
+          setTimeout(() => {
+            window.location.href = 'login.html';
+          }, 1800);
+        } catch (err) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span data-i18n="auth.btn.register">Create Account</span>';
+          alertBox.style.display = 'flex';
+          alertBox.innerHTML = `<span>⚠️</span><div>${Utils.escapeHTML(err.message || 'Registration failed.')}</div>`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

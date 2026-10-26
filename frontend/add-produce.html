@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="List a new agricultural produce lot on the FarmerLinkage marketplace.">
+  <title>Add Produce Lot — FarmerLinkage</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body class="dashboard-layout">
+  <div id="dashboard-sidebar-container"></div>
+
+  <div class="dashboard-main">
+    <div id="dashboard-header-container"></div>
+
+    <main class="dashboard-content">
+      <div class="container-narrow" style="margin: 0 auto;">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h2 style="font-size:var(--font-size-lg); margin-bottom:2px;">Post New Produce Lot</h2>
+              <p style="font-size:var(--font-size-xs); color:var(--color-secondary-text); margin-bottom:0;">
+                Your produce listing will be immediately discoverable by verified commercial buyers across the network.
+              </p>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div id="add-produce-alert" class="alert alert-error" style="display:none;"></div>
+
+            <form id="add-produce-form" novalidate>
+              <div class="form-group">
+                <label for="lot-crop-id" class="form-label">Crop / Commodity <span class="required">*</span></label>
+                <select id="lot-crop-id" class="form-select" required>
+                  <option value="">Loading crop catalog...</option>
+                </select>
+                <div class="form-error"></div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label for="lot-quantity" class="form-label">Available Quantity <span class="required">*</span></label>
+                  <input type="number" id="lot-quantity" class="form-control" placeholder="e.g. 50" min="1" step="any" required>
+                  <div class="form-error"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="lot-quantity-unit" class="form-label">Quantity Unit <span class="required">*</span></label>
+                  <select id="lot-quantity-unit" class="form-select">
+                    <option value="quintal" selected>Quintal (100 kg)</option>
+                    <option value="kg">Kilogram (kg)</option>
+                    <option value="tonne">Metric Tonne (1,000 kg)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label for="lot-price" class="form-label">Asking Price per Unit (₹) <span class="required">*</span></label>
+                  <input type="number" id="lot-price" class="form-control" placeholder="e.g. 1500" min="1" step="0.01" required>
+                  <div class="form-error"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="lot-price-unit" class="form-label">Price Unit <span class="required">*</span></label>
+                  <select id="lot-price-unit" class="form-select">
+                    <option value="INR/Quintal" selected>INR/Quintal</option>
+                    <option value="INR/kg">INR/kg</option>
+                    <option value="INR/tonne">INR/tonne</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label for="lot-grade" class="form-label">Quality Grade</label>
+                  <select id="lot-grade" class="form-select">
+                    <option value="GRADE_A">Grade A (Premium)</option>
+                    <option value="GRADE_B" selected>Grade B (Standard)</option>
+                    <option value="GRADE_C">Grade C (Commercial)</option>
+                    <option value="FAIR_AVERAGE_QUALITY">Fair Average Quality (FAQ)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="lot-harvest-date" class="form-label">Harvest Date</label>
+                  <input type="date" id="lot-harvest-date" class="form-control">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label for="lot-state" class="form-label">State <span class="required">*</span></label>
+                  <input type="text" id="lot-state" class="form-control" placeholder="e.g. Maharashtra" required>
+                  <div class="form-error"></div>
+                </div>
+
+                <div class="form-group">
+                  <label for="lot-district" class="form-label">District <span class="required">*</span></label>
+                  <input type="text" id="lot-district" class="form-control" placeholder="e.g. Nashik" required>
+                  <div class="form-error"></div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label for="lot-taluka" class="form-label">Taluka</label>
+                  <input type="text" id="lot-taluka" class="form-control" placeholder="e.g. Niphad">
+                </div>
+
+                <div class="form-group">
+                  <label for="lot-village" class="form-label">Village / Farmgate Landmark</label>
+                  <input type="text" id="lot-village" class="form-control" placeholder="e.g. Lasalgaon">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="lot-description" class="form-label">Produce Description / Variety Notes</label>
+                <textarea id="lot-description" class="form-control" rows="3" placeholder="Specify variety (e.g. Garva / Red onion), storage conditions, packaging, or special handling notes..."></textarea>
+              </div>
+
+              <div style="margin-top:var(--spacing-6); display:flex; justify-content:space-between; align-items:center;">
+                <a href="farmer-produce.html" class="btn btn-outline">Cancel</a>
+                <button type="submit" id="btn-submit-lot" class="btn btn-primary" style="min-width:180px;">
+                  Publish Produce Lot
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/farmer.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Auth.requireAuth(['FARMER'])) {
+        Farmer.initAddProduce();
+      }
+    });
+  </script>
+</body>
+</html>
